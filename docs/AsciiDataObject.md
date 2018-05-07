@@ -1,4 +1,4 @@
-## AsciiDataObject.md
+## AsciiDataObject [https://img.shields.io/badge/composable-no-red.svg]
 
 An ASCII file containing one value on each line. The `AsciiDataObject` store all values in a single `ArrayExchangeItem`.
 
