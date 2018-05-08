@@ -1,5 +1,4 @@
-## AsciiDataObject ![](https://img.shields.io/badge/composable-no-red.svg)
-
+## AsciiDataObject
 An ASCII file containing one value on each line. The `AsciiDataObject` store all values in a single `ArrayExchangeItem`.
 
 ### Example file
