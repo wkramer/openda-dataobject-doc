@@ -1,4 +1,5 @@
-## CsvTimeSeriesDataObject
+## CsvTimeSeriesDataObject   ![](https://img.shields.io/badge/composable-yes-brightgreen.svg)
+
 
 ### Configuration
 
