@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataObjectConfig>
+<!-- Simple config -->
+
+	<!--
+1. File "waqua_maps.nc"
+  dimensions:
+    N = 1261;
+    M = 1121;
+    TIME = UNLIMITED;   // (7 currently)
+    LAYER = 10;
+    bounds = 4;
+  variables:
+    double TIME(TIME=7);
+    float SEP(TIME=7, N=1261, M=1121);
+    float VELU(TIME=7, N=1261, M=1121, LAYER=10);
+    float VELV(TIME=7, N=1261, M=1121, LAYER=10);
+    float XZETA(N=1261, M=1121);
+    float YZETA(N=1261, M=1121);
+    int CRS;
+    float grid_x(N=1261, M=1121, bounds=4);
+    float grid_y(N=1261, M=1121, bounds=4);
+
+-->
+
+<!-- Get waterlevel grid -->
+
+<exchangeItemSpecification class="org.openda.exchange.DoublesExchangeItem">
+<id>Waterlevel.Grid</id>
+<values>
+    <selection>
+        <variable name="SEP">
+            <dimension name="TIME" index="-1"/>
+        </variable>
+    </selection>
+</values>
+</exchangeItemSpecification>
+
+<!-- Get U velocity grid at surface layer -->
+
+<exchangeItemSpecification class="org.openda.exchange.DoublesExchangeItem">
+<id>VELU.SurfaceLayer</id>
+<values>
+    <selection>
+        <variable name="VELU">
+            <dimension name="LAYER" index="1"/>
+            <dimension name="TIME" index="-1"/>
+        </variable>
+    </selection>
+</values>
+</exchangeItemSpecification>
+
+<!-- Get waterlevel section -->
+
+<exchangeItemSpecification class="org.openda.exchange.DoublesExchangeItem">
+<id>Waterlevel.Grid</id>
+<values>
+    <selection>
+        <variable name="SEP">
+            <dimension name="TIME" index="-1"/>
+            <dimension name="N" index="10:14"/>
+            <dimension name="M" index="33:128"/>
+        </variable>
+    </selection>
+</values>
+</exchangeItemSpecification>
+
+<!-- Get waterlevel timeseries from grid point -->
+
+<exchangeItemSpecification class="org.openda.exchange.timeseries.TimeSeries">
+<id>Waterlevel.HoekVanHolland</id>
+<times>
+    <selection>
+        <variable name="TIME"/>
+    </selection>
+</times>
+<values>
+    <selection>
+        <variable name="SEP">
+            <dimension name="LAYER" index="1"/>
+            <dimension name="N" index="14"/>
+            <dimension name="M" index="128"/>
+        </variable>
+    </selection>
+</values>
+</exchangeItemSpecification>
+
+
+	<!--
+2. File "waquaseries.nc"
+    dimensions:
+      STATION = 96;
+      TIME = UNLIMITED;   // (37 currently)
+      LEN_NAMWL = 80;
+      DIM_ITDATE_001 = 1;
+      LEN_ITDATE = 80;
+      N = 1539;
+      M = 501;
+      STATIONCUR = 82;
+      LAYER = 1;
+      LEN_NAMC = 80;
+    variables:
+      double TIME(TIME=37);
+      float ZWL(TIME=37, STATION=96);
+      char NAMWL(STATION=96, LEN_NAMWL=80);
+      int MWL(STATION=96);
+      int NWL(STATION=96);
+      char ITDATE(DIM_ITDATE_001=1, LEN_ITDATE=80);
+      float XZETA(N=1539, M=501);
+      float YZETA(N=1539, M=501);
+      float ZCURU(TIME=37, STATIONCUR=82, LAYER=1);
+      float ZCURV(TIME=37, STATIONCUR=82, LAYER=1);
+      char NAMC(STATIONCUR=82, LEN_NAMC=80);
+      int MC(STATIONCUR=82);
+      int NC(STATIONCUR=82);
+      float XU(N=1539, M=501);
+      float YU(N=1539, M=501);
+-->
+
+<!-- Advanced config -->
+
+
+<!-- Get waterlevel timeseries for all stations -->
+
+<exchangeItemSpecification class="org.openda.exchange.timeseries.TimeSeries">
+<id>
+    <template>foo.${meta:location}.${meta:quantity}</template>
+</id>
+<meta>
+    <location>
+        <selection>
+            <variable name="NAMWL"/>
+        </selection>
+    </location>
+    <quantity>Waterlevel</quantity>
+</meta>
+<times>
+    <selection>
+        <variable name="TIME"/>
+    </selection>
+</times>
+<values>
+    <selection>
+        <variable name="ZWL"/>
+    </selection>
+</values>
+</exchangeItemSpecification>
+
+<!-- Get waterlevel timeseries for Hoek van Holland en Den Helder -->
+
+
+<exchangeItemSpecification class="org.openda.exchange.timeseries.TimeSeries">
+<id>
+    <template>foo.${meta:location}.${meta:quantity}</template>
+</id>
+<meta>
+    <location>
+        <selection>
+            <variable name="NAMWL" value="HKVHLD"/>
+            <variable name="NAMWL" value="DNHLDR"/>
+        </selection>
+    </location>
+    <quantity>Waterlevel</quantity>
+</meta>
+<times>
+    <selection>
+        <variable name="TIME"/>
+    </selection>
+</times>
+<values>
+    <selection>
+        <variable name="ZWL"/>
+    </selection>
+</values>
+</exchangeItemSpecification>
+
+
+</dataObjectConfig>
