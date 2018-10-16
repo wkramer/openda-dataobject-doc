@@ -1,10 +1,13 @@
-## CsvTimeSeriesDataObject
+## CsvTimeSeriesDataObject   ![](https://img.shields.io/badge/composable-yes-brightgreen.svg)
+
 
 ### Configuration
 
 ```xml
 <dataObject className="CsvTimeSeriesDataObject">
     <path>file.csv</path>
+    <delimiter>;</delimiter>
+    <decimalPoint></decimalPoint>
 </dataObject>
 ```
 
@@ -24,3 +27,9 @@ datetime,parameter1,parameter2
 | type     | `TimeSeries`                  |          |
 | id       | column header                 | `parameter1`, `parameter2` |
 | count    | number of columns - 1         | 2        |
+
+
+
+TODO:
+
+-   Consider delimiter-separated files (tab separated, etc)
