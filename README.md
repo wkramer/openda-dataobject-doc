@@ -4,6 +4,8 @@ Draft version
 
 - [AsciiDataObject](docs/AsciiDataObject.md)
 
+- [AsciiKeywordDataObject](docs/AsciiKeywordDataObject.md)
+
 - [CsvTimeSeriesDataObject](docs/CsvTimeSeriesDataObject.md)
 
 - [EsriAsciiGridDataObject](docs/EsriAsciiGridDataObject.md)
