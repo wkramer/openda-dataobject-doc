@@ -8,6 +8,8 @@ For each occurance of the keyword in the `AsciiKeywordDataObject` searches for a
 
 ### Example file
 
+This is a YAML file with the additional inline comments `#oda:time_control` and `#oda:reaction_time`.
+
 ```yaml
 %YAML 1.1
 ---
