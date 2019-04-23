@@ -28,6 +28,7 @@ reaction_time: 2000.0  #oda:reaction_time
 ```xml
 <dataObject className="AsciiKeywordDataObject">
   <path>config.yaml</path>
+  <id>DATA_OBJECT_ID</id>
 </dataObject>
 ```
 

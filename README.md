@@ -6,3 +6,4 @@ Draft version
 
 - [AsciiKeywordDataObject](docs/AsciiKeywordDataObject.md)
 
+- [TimeSeriesFormatterDataObject](docs/TimeSeriesFormatterDataObject.md)

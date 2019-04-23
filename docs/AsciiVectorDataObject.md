@@ -15,6 +15,7 @@ The `AsciiVectorDataObject` reads an ASCII file containing one value on each lin
 ```xml
 <dataObject className="AsciiVectorDataObject">
   <path>waterlevel.dat</path>
+  <id>DATA_OBJECT_ID</id>
   <!-- Optional argument -->
   <arg>as_separate_exchange_items</arg>
 </dataObject>
